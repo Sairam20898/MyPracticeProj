@@ -1,0 +1,31 @@
+<template>
+    <lightning-card>
+        <h1>{text}</h1>
+    </lightning-card>
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <template if:true={accounts}>
+                <template for:each={accounts} for:item="acc">
+                    <p key={acc.Id}>{acc.Name}</p>
+                </template>
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+        </div>
+        <ul class="slds-m-around_medium">
+            <template iterator:it={salesforcedriller}>
+                <li key={it.value.Id}>
+                    <div if:true={it.first} class="list-first">
+                        This is First Item Name: {it.value.Name}
+                    </div>
+                    {it.value.Name}
+                    <div if:true={it.last} class="list-last">
+                        This is Last Item Name: {it.value.Name}
+                    </div>
+                </li>
+            </template>
+        </ul>
+    </lightning-card>
+    
+</template>
